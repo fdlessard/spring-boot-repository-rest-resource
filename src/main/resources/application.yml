@@ -1,0 +1,23 @@
+spring:
+  datasource:
+    platform: POSTGRESQL
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: postgres
+    password:
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: true
+    database: POSTGRESQL
+    hibernate:
+      ddl-auto: create-drop
+
+
+#    initialization-mode: always
+#  jpa:
+#    generate-ddl: false
+#    properties:
+#      eclipselink.target-database: org.eclipse.persistence.platform.database.PostgreSQLPlatform
+#      eclipselink.jdbc.allow-native-sql-query: true
+#      eclipselink.logging.parameters: true
+#      eclipselink.logging.level: FINEST
+#      eclipselink.weaving: false
