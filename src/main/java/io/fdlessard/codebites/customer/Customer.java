@@ -1,6 +1,7 @@
 package io.fdlessard.codebites.customer;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -37,7 +38,8 @@ public class Customer implements Serializable {
     @Size(min = 2, message = "firstName must have more thant 2 characters")
     private String firstName;
 
-    private String company;
+    @JsonProperty("company")
+    private String unternehmen;
 
     @DecimalMin(value = "0.000", message = "Minimum rate value is 0.000")
     @JsonSerialize(using = BigDecimalScale3Serializer.class)

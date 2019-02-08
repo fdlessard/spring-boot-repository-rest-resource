@@ -11,5 +11,4 @@ public interface CustomerRepository extends PagingAndSortingRepository<Customer,
 
     List<Customer> findByLastName(@Param("lastName") String lastName);
     List<Customer> findByFirstName(@Param("firstName") String firstName);
-    List<Customer> findByCompany(@Param("company") String company);
 }

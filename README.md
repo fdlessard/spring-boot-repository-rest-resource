@@ -9,11 +9,10 @@ GET, POST, DELETE , UPDATE  http://localhost:8080/customers
 GET http://localhost:8080/customers/1
 
 ### Search Queries
+
 GET http://localhost:8080/customers/search/findByLastName?lastName=lastname
 
 GET http://localhost:8080/customers/search/findByFirstName?firstName=firstname
-
-GET http://localhost:8080/customers/search/findByCompany?company=company
 
 
 
