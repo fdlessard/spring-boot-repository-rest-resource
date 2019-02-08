@@ -1,4 +1,39 @@
+# Default properties
 spring:
+  profiles:
+    active: development-local
+  output:
+    ansi:
+      enabled: always
+  cloud:
+    refresh:
+      refreshable: none
+
+server:
+  port: 8080
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: beans, health, loggers
+    health:
+      enabled: true
+    loggers:
+      enabled: true
+    beans:
+      enabled: true
+
+logging:
+  level.io.fdlessard.codebites.customer: DEBUG
+#  level.root: DEBUG
+#  level.org.springframework.cloud.sleuth: DEBUG
+
+---
+# Development profile
+
+spring:
+  profiles: development-local
   datasource:
     platform: POSTGRESQL
     url: jdbc:postgresql://localhost:5432/postgres
@@ -11,13 +46,16 @@ spring:
     hibernate:
       ddl-auto: create-drop
 
+---
+# Production Cloud profile
 
-#    initialization-mode: always
-#  jpa:
-#    generate-ddl: false
-#    properties:
-#      eclipselink.target-database: org.eclipse.persistence.platform.database.PostgreSQLPlatform
-#      eclipselink.jdbc.allow-native-sql-query: true
-#      eclipselink.logging.parameters: true
-#      eclipselink.logging.level: FINEST
-#      eclipselink.weaving: false
+spring:
+  profiles: production-cloud
+  datasource:
+    initialization-mode: always
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: true
+    database: POSTGRESQL
+    hibernate:
+      ddl-auto: create-drop

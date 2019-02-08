@@ -15,7 +15,10 @@
     <description>Demo project for Spring Boot</description>
 
     <properties>
+<!--
         <java.version>11</java.version>
+-->
+        <java.version>1.8</java.version>
     </properties>
 
     <dependencies>
@@ -35,7 +38,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
@@ -56,6 +58,22 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-dependencies</artifactId>
+            <version>Greenwich.RELEASE</version>
+            <type>pom</type>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-spring-service-connector</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-cloudfoundry-connector</artifactId>
+        </dependency>
+
     </dependencies>
 
     <build>
