@@ -16,6 +16,11 @@ GET http://localhost:8080/customers/search/findByFirstName?firstName=firstname
 GET http://localhost:8080/customers/search/findByCompany?company=company
 
 
+
+### Cloud Url
+
+https://customer.cfapps.eu10.hana.ondemand.com/customers
+
 ### HATEOAS (Hypermedia as the Engine of Application State)
 
 http://localhost:8080/profile/customers

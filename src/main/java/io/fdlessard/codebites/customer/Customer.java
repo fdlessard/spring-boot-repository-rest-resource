@@ -30,11 +30,11 @@ public class Customer implements Serializable {
     private int version;
 
     @NotBlank(message = "lastName name cannot be blank")
-    @Size(min = 2)
+    @Size(min = 2, message = "lastName must have more thant 2 characters")
     private String lastName;
 
     @NotBlank(message = "firstName name cannot be blank")
-    @Size(min = 2)
+    @Size(min = 2, message = "firstName must have more thant 2 characters")
     private String firstName;
 
     private String company;
