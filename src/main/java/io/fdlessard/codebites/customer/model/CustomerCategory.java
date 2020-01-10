@@ -7,14 +7,13 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.io.Serializable;
 
 @Entity
 @Builder
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Address implements Serializable {
+public class CustomerCategory {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -24,11 +23,6 @@ public class Address implements Serializable {
     @Version
     private int version;
 
-    private String number;
-    private String street;
-    private String city;
-    private String postalCode;
-    private String province;
-    private String country;
+    private String category;
 
 }

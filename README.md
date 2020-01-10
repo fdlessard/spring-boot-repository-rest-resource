@@ -15,10 +15,42 @@ GET http://localhost:8080/customers/search/findByLastName?lastName=lastname
 GET http://localhost:8080/customers/search/findByFirstName?firstName=firstname
 
 
+### POST http://localhost:8080/customers
 
-### Cloud Url
+#### Create a new customer with an existing customer category
 
-https://customer.cfapps.eu10.hana.ondemand.com/customers
+    POST
+    {
+      "customerCategory": {
+        "id": 1
+      },
+      "lastName": "last-name-1",
+      "firstName": "first-name-1",
+      "company": "company-1"
+    }  
+    
+ ### PUT http://localhost:8080/customers/1
+   
+ #### Update customer 1 (overide all the fields with the provided/unprovided values)
+ 
+    {
+      "id": 1,
+      "customerCategory": {
+        "id": 1
+      },
+      "lastName": "last-name-1",
+      "firstName": "first-name-1",
+      "company": "company-1"
+    }
+
+
+ ### PATCH http://localhost:8080/customers/1
+   
+ #### Update customer 1 (overide the provided field values)
+ 
+    {
+      "company": "company-1-updated"
+    }
 
 ### HATEOAS (Hypermedia as the Engine of Application State)
 

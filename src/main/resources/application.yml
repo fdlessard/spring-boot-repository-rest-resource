@@ -27,7 +27,6 @@ management:
 logging:
   level.io.fdlessard.codebites.customer: DEBUG
 #  level.root: DEBUG
-#  level.org.springframework.cloud.sleuth: DEBUG
 
 ---
 # Development profile
@@ -59,16 +58,3 @@ spring:
 #    hibernate:
 #      ddl-auto: create-drop
 
----
-# Production Cloud profile
-
-spring:
-  profiles: production-cloud
-  datasource:
-    initialization-mode: always
-  jpa:
-    database-platform: org.hibernate.dialect.PostgreSQLDialect
-    show-sql: true
-    database: POSTGRESQL
-    hibernate:
-      ddl-auto: create-drop
