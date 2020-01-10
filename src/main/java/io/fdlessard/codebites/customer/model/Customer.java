@@ -1,19 +1,16 @@
-package io.fdlessard.codebites.customer;
+package io.fdlessard.codebites.customer.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
-import java.math.BigDecimal;
+import java.util.List;
 
 @Entity
 @Builder
@@ -24,7 +21,7 @@ public class Customer implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private long id;
 
     @JsonIgnore
     @Version
@@ -38,10 +35,9 @@ public class Customer implements Serializable {
     @Size(min = 2, message = "firstName must have more thant 2 characters")
     private String firstName;
 
-    @JsonProperty("company")
-    private String unternehmen;
+    private String company;
 
-    @DecimalMin(value = "0.000", message = "Minimum rate value is 0.000")
-    @JsonSerialize(using = BigDecimalScale3Serializer.class)
-    private BigDecimal rate;
+    @JoinColumn(name = "customer_id")
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Address> addresses;
 }

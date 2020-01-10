@@ -1,0 +1,18 @@
+{
+
+  "customerId" : 0,
+  "orderItems" : [
+    {
+      "itemId" : "itemId-01",
+      "productId" : 0,
+      "quantity" : 1.00
+
+    },
+    {
+      "itemId" : "itemId-02",
+      "productId" : 1,
+      "quantity" : 2.00
+
+    }
+  ]
+}

@@ -1,4 +1,4 @@
-package io.fdlessard.codebites.customer;
+package io.fdlessard.codebites.customer.configurations;
 
 import org.springframework.cloud.config.java.AbstractCloudConfig;
 import org.springframework.context.annotation.Bean;
