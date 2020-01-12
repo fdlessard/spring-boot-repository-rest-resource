@@ -13,6 +13,7 @@ import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.List;
 
+@Table(name = "customer")
 @Entity
 @Builder
 @Data
@@ -21,16 +22,17 @@ import java.util.List;
 public class Customer implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name="version", columnDefinition = "int default 0")
     @JsonIgnore
     @Version
     private int version;
 
     @NotNull
     @ManyToOne
-    @JoinColumn(name = "category_id")
+    @JoinColumn(name = "category_id",  foreignKey = @ForeignKey(name = "fk_category"))
     private CustomerCategory customerCategory;
 
     @NotBlank(message = "lastName name cannot be blank")
@@ -43,7 +45,7 @@ public class Customer implements Serializable {
 
     private String company;
 
-    @JoinColumn(name = "customer_id")
+    @JoinColumn(name = "customer_id", foreignKey = @ForeignKey(name = "fk_customer"))
     @OneToMany(cascade = CascadeType.ALL)
     private List<Address> addresses;
 }

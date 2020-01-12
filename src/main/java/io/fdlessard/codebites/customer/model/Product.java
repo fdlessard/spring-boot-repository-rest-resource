@@ -10,6 +10,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
+@Table(name = "product")
 @Entity
 @Builder
 @Data
@@ -18,9 +19,10 @@ import java.math.BigDecimal;
 public class Product implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name="version", columnDefinition = "int default 0")
     @JsonIgnore
     @Version
     private int version;

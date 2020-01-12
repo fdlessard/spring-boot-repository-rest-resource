@@ -10,8 +10,8 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
 
+@Table(name = "`order`")
 @Entity
-@Table(name = "ORDER1")
 @Builder
 @Data
 @AllArgsConstructor
@@ -19,16 +19,17 @@ import java.util.List;
 public class Order implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name="version", columnDefinition = "int default 0")
     @JsonIgnore
     @Version
     private int version;
 
     private long customerId;
 
-    @JoinColumn(name = "order_id")
+    @JoinColumn(name = "order_id",  foreignKey = @ForeignKey(name = "fk_order_item"))
     @OneToMany(cascade = CascadeType.ALL)
     private List<OrderItem> orderItems;
 }

@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.io.Serializable;
 
+@Table(name = "address")
 @Entity
 @Builder
 @Data
@@ -17,9 +18,10 @@ import java.io.Serializable;
 public class Address implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name="version", columnDefinition = "int default 0")
     @JsonIgnore
     @Version
     private int version;
