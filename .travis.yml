@@ -1,7 +1,7 @@
 language: java
 script: mvn package
 jdk:
-  - oraclejdk8
+  - oraclejdk11
   -
 env:
   ACTIVE_PROFILE: development-h2
