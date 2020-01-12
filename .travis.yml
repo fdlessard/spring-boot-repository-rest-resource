@@ -13,4 +13,4 @@ deploy:
   region: "us-east-2"
   app: "customer"
   env: "Customer-env-1"
-  bucket_name: "customer-S3-bucket"
+  bucket_name: "elasticbeanstalk-us-east-2-154006754026"
