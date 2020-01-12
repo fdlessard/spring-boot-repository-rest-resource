@@ -1,3 +1,8 @@
+## spring-boot-repository-rest-resource
+
+[![Build Status](https://travis-ci.org/fdlessard/spring-boot-repository-rest-resource.svg)](https://travis-ci.org/fdlessard/spring-boot-repository-rest-resource)
+[![License](http://img.shields.io/:license-mit-blue.svg)](https://github.com/fdlessard/spring-boot-repository-rest-resource/blob/master/LICENSE)
+
 ## Example of SpringData @RepositoryRestResource with JSR 303 (Java Bean Validation) and JsonSerialization annotation
 
 
