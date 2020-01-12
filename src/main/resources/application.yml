@@ -1,7 +1,7 @@
 # Default properties
 spring:
   profiles:
-    active: development-h2
+    active: ${ACTIVE_PROFILE:development-postgresql}
   output:
     ansi:
       enabled: always
@@ -55,9 +55,9 @@ spring:
   datasource:
     platform: postgresql
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/postgres
-    username: user
-    password: password
+    url: jdbc:postgresql://${RDS_HOSTNAME:localhost}:${RDS_PORT:5432}/${RDS_DB_NAME:postgres}
+    username: ${RDS_USERNAME:customerUser}
+    password: ${RDS_PASSWORD:customerPassword}
     data: classpath:data/data.sql
     initialization-mode: always
   jpa:
