@@ -4,13 +4,4 @@ jdk:
   - oraclejdk11
 env:
   ACTIVE_PROFILE: development-postgresql
-deploy:
-  provider: elasticbeanstalk
-  access_key_id:
-    secure: AKIAIVWHSAW3BO4EFGEQ
-  secret_access_key:
-    secure: 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
-  region: "us-east-2"
-  app: "customer"
-  env: "Customer-env-1"
-  bucket_name: "elasticbeanstalk-us-east-2-154006754026"
+
