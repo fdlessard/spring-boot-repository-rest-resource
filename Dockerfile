@@ -8,8 +8,8 @@ LABEL maintainer="fdlessard@gmail.com"
 VOLUME /tmp
 
 # Make port 8080 available to the world outside this container
-EXPOSE 8080
-EXPOSE 5005
+EXPOSE 8080/tcp
+EXPOSE 5005/tcp
 
 # The application's jar file
 ARG JAR_FILE=target/customer-0.0.1-SNAPSHOT.jar
