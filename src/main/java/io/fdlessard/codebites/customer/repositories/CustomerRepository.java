@@ -7,7 +7,7 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 import java.util.List;
 
-@RepositoryRestResource(collectionResourceRel = "customer", path = "customers")
+@RepositoryRestResource(path = "customers")
 public interface CustomerRepository extends PagingAndSortingRepository<Customer, Long> {
 
     List<Customer> findByLastName(@Param("lastName") String lastName);

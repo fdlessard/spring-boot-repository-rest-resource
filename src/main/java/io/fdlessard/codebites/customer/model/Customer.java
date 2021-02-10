@@ -8,7 +8,6 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.List;
@@ -25,15 +24,10 @@ public class Customer implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name="version", columnDefinition = "int default 0")
+    @Column(name = "version", columnDefinition = "int default 0")
     @JsonIgnore
     @Version
     private int version;
-
-    @NotNull
-    @ManyToOne
-    @JoinColumn(name = "category_id",  foreignKey = @ForeignKey(name = "fk_category"))
-    private CustomerCategory customerCategory;
 
     @NotBlank(message = "lastName name cannot be blank")
     @Size(min = 2, message = "lastName must have more thant 2 characters")

@@ -1,13 +1,20 @@
-# Default properties
 spring:
-  profiles:
-    active: ${ACTIVE_PROFILE:development-postgresql}
   output:
     ansi:
       enabled: always
-  cloud:
-    refresh:
-      refreshable: none
+  datasource:
+    platform: h2
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:testdb
+    username: sa
+    password:
+    data: classpath:data/data.sql
+  # enable H2 web console and set url for web console
+  # http://localhost:8080/console
+  h2:
+    console:
+      enabled: true
+      path: /console
 
 server:
   port: 8080
@@ -27,46 +34,6 @@ management:
 logging:
   level.io.fdlessard.codebites.customer: DEBUG
 #  level.root: DEBUG
-
----
-# development-h2 profile
-
-spring:
-  profiles: development-h2
-  datasource:
-    platform: h2
-    driver-class-name: org.h2.Driver
-    url: jdbc:h2:mem:testdb
-    username: sa
-    password:
-    data: classpath:data/data.sql
-  # enable H2 web console and set url for web console
-  # http://localhost:8080/console
-  h2:
-    console:
-      enabled: true
-      path: /console
-
----
-# development-postgresql profile
-
-spring:
-  profiles: development-postgresql
-  datasource:
-    platform: postgresql
-    driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://${POSTGRES_HOST:localhost}:5432/postgres
-    username: customerUser
-    password: customerPassword
-    data: classpath:data/data.sql
-    initialization-mode: always
-  jpa:
-    database-platform: org.hibernate.dialect.PostgreSQLDialect
-    show-sql: true
-    database: postgresql
-    hibernate:
-        auto_quote_keyword: true
-        ddl-auto: create-drop
 
 
 
