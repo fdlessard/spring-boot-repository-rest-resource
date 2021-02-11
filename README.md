@@ -13,12 +13,6 @@ GET, POST, DELETE , UPDATE  http://localhost:8080/customers
 
 GET http://localhost:8080/customers/1
 
-### Search Queries
-
-GET http://localhost:8080/customers/search/findByLastName?lastName=lastname
-
-GET http://localhost:8080/customers/search/findByFirstName?firstName=firstname
-
 
 ### POST http://localhost:8080/customers
 
@@ -26,9 +20,6 @@ GET http://localhost:8080/customers/search/findByFirstName?firstName=firstname
 
     POST
     {
-      "customerCategory": {
-        "id": 1
-      },
       "lastName": "last-name-1",
       "firstName": "first-name-1",
       "company": "company-1"
@@ -39,10 +30,7 @@ GET http://localhost:8080/customers/search/findByFirstName?firstName=firstname
  #### Update customer 1 (overide all the fields with the provided/unprovided values)
  
     {
-      "id": 1,
-      "customerCategory": {
-        "id": 1
-      },
+
       "lastName": "last-name-1",
       "firstName": "first-name-1",
       "company": "company-1"
@@ -67,7 +55,6 @@ http://localhost:8080/profile/customers
             "firstName": "firstname",
             "lastName" : "lastname",
             "company" : "company",
-            "rate" : 5.0
         }
         
 ### Sample Get HATEOAS response        
