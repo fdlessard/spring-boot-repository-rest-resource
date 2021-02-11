@@ -21,10 +21,13 @@ public class Address implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name="version", columnDefinition = "int default 0")
+    @Column(name = "version", columnDefinition = "int default 0")
     @JsonIgnore
     @Version
     private int version;
+
+    @ManyToOne
+    private Customer customer;
 
     private String number;
     private String street;

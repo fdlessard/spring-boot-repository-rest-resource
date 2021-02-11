@@ -1,5 +1,6 @@
 package io.fdlessard.codebites.customer.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -10,7 +11,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
-import java.util.List;
+import java.util.Set;
 
 @Table(name = "customer")
 @Entity
@@ -39,7 +40,9 @@ public class Customer implements Serializable {
 
     private String company;
 
-    @JoinColumn(name = "customer_id", foreignKey = @ForeignKey(name = "fk_customer"))
-    @OneToMany(cascade = CascadeType.ALL)
-    private List<Address> addresses;
+    @JsonBackReference
+
+    //@JoinColumn(name = "customer_id")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy="customer")
+    private Set<Address> addresses;
 }
