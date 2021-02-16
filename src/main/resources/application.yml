@@ -1,28 +1,3 @@
-spring:
-  output:
-    ansi:
-      enabled: always
-  datasource:
-    platform: h2
-    driver-class-name: org.h2.Driver
-    url: jdbc:h2:mem:testdb;TRACE_LEVEL_FILE=2
-#    url: jdbc:h2:mem:testdb;
-    username: sa
-    password:
-    data: classpath:data/data.sql
-  # enable H2 web console and set url for web console
-  # http://localhost:8080/console
-  h2:
-    console:
-      enabled: true
-      path: /console
-  jpa:
-    show-sql: true
-    properties:
-      hibernate:
-        show_sql: true
-        format_sql: true
-
 server:
   port: 8080
 
@@ -40,8 +15,35 @@ management:
 
 logging:
   level.root: INFO
-#  level.org.hibernate.SQL: DEBUG
+  #  level.org.hibernate.SQL: DEBUG
   level.io.fdlessard.codebites.customer: DEBUG
+
+
+spring:
+  output:
+    ansi:
+      enabled: always
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQL10Dialect
+    show-sql: true
+    hibernate:
+      ddl-auto: create-drop
+      use-new-id-generator-mappings: false
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+      jdbc:
+        time_zone: UTC
+  datasource:
+    username: postgres
+    password: secret
+    platform: postgres
+    driverClassName: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/testdb
+    initialization-mode: always
+    data: classpath:data/data.sql
+
 
 
 
