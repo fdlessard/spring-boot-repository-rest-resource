@@ -40,9 +40,9 @@ public class Customer implements Serializable {
 
     private String company;
 
-    @JsonBackReference
-
-    //@JoinColumn(name = "customer_id")
-    @OneToMany(cascade = CascadeType.ALL, mappedBy="customer")
+    //@JsonBackReference
+    //@OneToMany(cascade = CascadeType.ALL, mappedBy="customer")
+    @JoinColumn(name = "customer_id")
+    @OneToMany(cascade = CascadeType.ALL)
     private Set<Address> addresses;
 }

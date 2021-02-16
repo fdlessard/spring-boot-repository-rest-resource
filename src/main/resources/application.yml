@@ -5,7 +5,8 @@ spring:
   datasource:
     platform: h2
     driver-class-name: org.h2.Driver
-    url: jdbc:h2:mem:testdb
+    url: jdbc:h2:mem:testdb;TRACE_LEVEL_FILE=2
+#    url: jdbc:h2:mem:testdb;
     username: sa
     password:
     data: classpath:data/data.sql
@@ -21,7 +22,6 @@ spring:
       hibernate:
         show_sql: true
         format_sql: true
-
 
 server:
   port: 8080
@@ -39,9 +39,10 @@ management:
       enabled: true
 
 logging:
+  level.root: INFO
+#  level.org.hibernate.SQL: DEBUG
   level.io.fdlessard.codebites.customer: DEBUG
-  level.root: DEBUG
-  level.org.hibernate.SQL: info
+
 
 
 

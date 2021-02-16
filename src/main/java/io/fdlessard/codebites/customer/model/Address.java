@@ -26,8 +26,8 @@ public class Address implements Serializable {
     @Version
     private int version;
 
-    @ManyToOne
-    private Customer customer;
+//    @ManyToOne
+//    private Customer customer;
 
     private String number;
     private String street;
