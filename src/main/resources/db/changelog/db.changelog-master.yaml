@@ -13,11 +13,6 @@ databaseChangeLog:
               - column: {name: first_name, type: varchar(50)}
               - column: {name: last_name, type: varchar(50)}
               - column: {name: company, type: varchar(50)}
-              - column: {name: created_by, type: varchar(100), constraints: {nullable: false}}
-              - column: {name: created_date, type: timestamp, constraints: {nullable: false}}
-              - column: {name: last_modified_by, type: varchar(100)}
-              - column: {name: last_modified_date, type: timestamp}
-              - column: {name: deleted_date, type: timestamp, defaultValue: null}
 
         - createTable:
             tableName: address
@@ -45,11 +40,6 @@ databaseChangeLog:
               - column: { name: id, type: bigserial, constraints: { primaryKey: true, nullable: false } }
               - column: { name: version, type: int, defaultValueNumeric: 0, constraints: { nullable: false } }
               - column: { name: name, type: varchar(50) }
-              - column: {name: created_by, type: varchar(100), constraints: {nullable: false}}
-              - column: {name: created_date, type: timestamp, constraints: {nullable: false}}
-              - column: {name: last_modified_by, type: varchar(100)}
-              - column: {name: last_modified_date, type: timestamp}
-              - column: {name: deleted_date, type: timestamp, defaultValue: null}
 
         - createTable:
             tableName: customer_group_customer

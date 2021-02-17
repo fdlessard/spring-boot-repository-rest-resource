@@ -35,7 +35,7 @@ dependencies {
     testImplementation 'org.testcontainers:junit-jupiter'
     implementation 'org.postgresql:postgresql'
     implementation 'org.liquibase:liquibase-core:4.2.2'
-
+    implementation 'pl.project13.maven:git-commit-id-plugin:4.0.2'
 }
 
 dependencyManagement {

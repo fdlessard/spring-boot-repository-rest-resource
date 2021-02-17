@@ -22,11 +22,11 @@ public abstract class BaseEntity {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "id")
-  private Long id;
+  protected Long id;
 
   @JsonIgnore
   @Version
   @Column(name = "version")
-  private int version;
+  protected int version;
 
 }

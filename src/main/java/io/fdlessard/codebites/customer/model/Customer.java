@@ -1,7 +1,5 @@
 package io.fdlessard.codebites.customer.model;
 
-import java.io.Serializable;
-import java.time.Instant;
 import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -14,8 +12,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
-import org.hibernate.annotations.SQLDelete;
-import org.hibernate.annotations.Where;
 
 @Table(name = "customer", schema = "public")
 @Entity
@@ -23,9 +19,7 @@ import org.hibernate.annotations.Where;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@SQLDelete(sql = "UPDATE public.customer SET deleted_date=now() WHERE id=? AND version = ?")
-@Where(clause = "deleted_date IS NULL")
-public class Customer extends SoftDeletableAndAuditableEntity<Instant, String, Instant> {
+public class Customer extends BaseEntity {
 
   @NotBlank(message = "lastName name cannot be blank")
   @Size(min = 2, message = "lastName must have more thant 2 characters")
@@ -39,8 +33,6 @@ public class Customer extends SoftDeletableAndAuditableEntity<Instant, String, I
   @Size(min = 2, message = "company must have more thant 2 characters")
   private String company;
 
-  //@JsonBackReference
-  //@OneToMany(cascade = CascadeType.ALL, mappedBy="customer")
   @JoinColumn(name = "customer_id")
   @OneToMany(cascade = CascadeType.ALL)
   private Set<Address> addresses;
