@@ -1,6 +1,7 @@
 package io.fdlessard.codebites.customer.model;
 
 import java.io.Serializable;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -17,14 +18,17 @@ import lombok.experimental.SuperBuilder;
 @NoArgsConstructor
 public class Address extends BaseEntity implements Serializable {
 
-//    @ManyToOne
-//    private Customer customer;
-
+  @Column(name = "number")
   private String number;
+  @Column(name = "street")
   private String street;
+  @Column(name = "city")
   private String city;
+  @Column(name = "postal_code")
   private String postalCode;
+  @Column(name = "province")
   private String province;
+  @Column(name = "country")
   private String country;
 
 }

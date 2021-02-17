@@ -18,16 +18,14 @@ logging:
   #  level.org.hibernate.SQL: DEBUG
   level.io.fdlessard.codebites.customer: DEBUG
 
-
 spring:
   output:
     ansi:
       enabled: always
   jpa:
     database-platform: org.hibernate.dialect.PostgreSQL10Dialect
-    show-sql: true
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: none
       use-new-id-generator-mappings: false
     properties:
       hibernate:
@@ -35,6 +33,7 @@ spring:
         format_sql: true
       jdbc:
         time_zone: UTC
+    show-sql: true
   datasource:
     username: postgres
     password: secret
@@ -42,8 +41,11 @@ spring:
     driverClassName: org.postgresql.Driver
     url: jdbc:postgresql://localhost:5432/testdb
     initialization-mode: always
-    data: classpath:data/data.sql
-
+  liquibase:
+    enabled: on
+    drop-first: on
+    default-schema: public
+    change-log: classpath:/db/changelog/db.changelog-master.yaml
 
 
 

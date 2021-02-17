@@ -26,7 +26,7 @@ public abstract class BaseEntity {
 
   @JsonIgnore
   @Version
-  @Column(name = "version", columnDefinition = "int default 0")
+  @Column(name = "version")
   private int version;
 
 }

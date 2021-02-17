@@ -2,6 +2,7 @@ package io.fdlessard.codebites.customer.model;
 
 import java.io.Serializable;
 import java.util.Set;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
@@ -22,6 +23,7 @@ import lombok.experimental.SuperBuilder;
 @NoArgsConstructor
 public class CustomerGroup extends BaseEntity implements Serializable {
 
+  @Column(name = "name")
   @Size(min = 2, message = "lastName must have more thant 2 characters")
   private String name;
 
