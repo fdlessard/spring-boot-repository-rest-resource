@@ -20,6 +20,21 @@ databaseChangeLog:
               - column:
                   name: company
                   type: string
+              - column:
+                  name: created_by
+                  type: string
+              - column:
+                  name: created_date
+                  type: date
+              - column:
+                  name: last_modified_by
+                  type: string
+              - column:
+                  name: last_modified_date
+                  type: date
+              - column:
+                  name: deleted_date
+                  type: date
 
         - loadData:
             tableName: address
@@ -48,6 +63,21 @@ databaseChangeLog:
                   type: string
               - column:
                   type: string
+              - column:
+                  name: created_by
+                  type: string
+              - column:
+                  name: created_date
+                  type: date
+              - column:
+                  name: last_modified_by
+                  type: string
+              - column:
+                  name: last_modified_date
+                  type: date
+              - column:
+                  name: deleted_date
+                  type: date
 
         - loadData:
             tableName: customer_group
@@ -59,6 +89,21 @@ databaseChangeLog:
               - column:
                   name: name
                   type: string
+              - column:
+                  name: created_by
+                  type: string
+              - column:
+                  name: created_date
+                  type: date
+              - column:
+                  name: last_modified_by
+                  type: string
+              - column:
+                  name: last_modified_date
+                  type: date
+              - column:
+                  name: deleted_date
+                  type: date
 
         - loadData:
             tableName: customer_group_customer

@@ -41,6 +41,8 @@ spring:
     driverClassName: org.postgresql.Driver
     url: jdbc:postgresql://localhost:5432/testdb
     initialization-mode: always
+    schema: classpath:/db/scripts/create-postgres-schema.sql
+    separator: ";;"
   liquibase:
     enabled: on
     drop-first: on

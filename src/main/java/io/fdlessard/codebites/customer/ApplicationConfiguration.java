@@ -2,6 +2,7 @@ package io.fdlessard.codebites.customer;
 
 import io.fdlessard.codebites.customer.model.Address;
 import io.fdlessard.codebites.customer.model.Customer;
+import io.fdlessard.codebites.customer.model.CustomerGroup;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
 import org.springframework.data.rest.webmvc.config.RepositoryRestConfigurer;
@@ -14,7 +15,7 @@ public class ApplicationConfiguration implements RepositoryRestConfigurer {
 
     @Override
     public void configureRepositoryRestConfiguration(RepositoryRestConfiguration config, CorsRegistry cors) {
-        config.exposeIdsFor(Customer.class, Address.class);
+        config.exposeIdsFor(CustomerGroup.class, Customer.class, Address.class);
     }
 }
 
