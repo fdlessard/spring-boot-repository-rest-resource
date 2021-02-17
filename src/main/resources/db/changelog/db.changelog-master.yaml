@@ -2,28 +2,22 @@ databaseChangeLog:
 
   - changeSet:
       id: 1
-      author: francois-david.lessard@nbc.ca
+      author: fdlessard@gmail.com
       changes:
 
         - createTable:
             tableName: customer
             columns:
-              - column: {name: id, type: bigint, constraints: {primaryKey: true, nullable: false}}
+              - column: {name: id, type: bigserial, constraints: {primaryKey: true, nullable: false}}
               - column: {name: version, type: int, defaultValueNumeric: 0, constraints: {nullable: false}}
               - column: {name: first_name, type: varchar(50)}
               - column: {name: last_name, type: varchar(50)}
               - column: {name: company, type: varchar(50)}
-        - addAutoIncrement:
-            columnDataType: bigint
-            columnName: id
-            incrementBy: 1
-            startWith: 1
-            tableName: customer
 
         - createTable:
             tableName: address
             columns:
-              - column: {name: id, type: bigint, constraints: {primaryKey: true, nullable: false}}
+              - column: {name: id, type: bigserial, constraints: {primaryKey: true, nullable: false}}
               - column: {name: customer_id, type: bigint, constraints: {nullable: false}}
               - column: {name: version, type: int, defaultValueNumeric: 0, constraints: {nullable: false}}
               - column: {name: number, type: varchar(50)}
@@ -32,12 +26,7 @@ databaseChangeLog:
               - column: {name: province, type: varchar(50)}
               - column: {name: postal_code, type: varchar(50)}
               - column: {name: country, type: varchar(50)}
-        - addAutoIncrement:
-            columnDataType: bigint
-            columnName: id
-            incrementBy: 1
-            startWith: 1
-            tableName: address
+
         - addForeignKeyConstraint:
             baseColumnNames: customer_id
             baseTableName: address
@@ -48,15 +37,9 @@ databaseChangeLog:
         - createTable:
             tableName: customer_group
             columns:
-              - column: { name: id, type: bigint, constraints: { primaryKey: true, nullable: false } }
+              - column: { name: id, type: bigserial, constraints: { primaryKey: true, nullable: false } }
               - column: { name: version, type: int, defaultValueNumeric: 0, constraints: { nullable: false } }
               - column: { name: name, type: varchar(50) }
-        - addAutoIncrement:
-            columnDataType: bigint
-            columnName: id
-            incrementBy: 1
-            startWith: 1
-            tableName: customer_group
 
         - createTable:
             tableName: customer_group_customer
@@ -78,3 +61,15 @@ databaseChangeLog:
 
   - include:
       file: "db/data/db.data.yaml"
+
+  - changeSet:
+      id: update_sequence_id
+      author: fdlessard@gmail.com
+      changes:
+        - sqlFile:
+            dbms: postgresql
+            encoding: UTF-8
+            path: ../scripts/update_sequence_id.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
