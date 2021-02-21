@@ -6,9 +6,10 @@ services:
     ports:
       - '5432:5432'
     environment:
-      - 'POSTGRES_DB=customer'
+      - 'POSTGRES_DB=customer-db'
       - 'POSTGRES_USER=customer-user'
-      - 'POSTGRES_PASSWORD=customer-password'
+      - 'POSTGRES_PASSWORD=secret'
+
   customer:
     build:
       context: .

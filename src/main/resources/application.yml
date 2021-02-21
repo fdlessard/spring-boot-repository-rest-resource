@@ -44,10 +44,10 @@ spring:
     show-sql: true
   datasource:
     username: customer-user
-    password: customer-password
+    password: secret
     platform: postgres
     driverClassName: org.postgresql.Driver
-    url: jdbc:postgresql://${POSTGRES_HOST:localhost}:5432/postgres
+    url: jdbc:postgresql://${POSTGRES_HOST:localhost}:5432/customer-db
     initialization-mode: always
     schema: classpath:/db/scripts/create-postgres-schema.sql
     separator: ";;"
