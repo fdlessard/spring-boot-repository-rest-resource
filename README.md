@@ -73,6 +73,14 @@ http://localhost:8080/profile/customers
                 }
             }
 
+
+### Docker
+
+docker build .
+docker-compose build .
+docker-compose up
+
+
 ### References: 
 
 - http://mrbool.com/rest-server-with-spring-data-spring-boot-and-postgresql/34023
