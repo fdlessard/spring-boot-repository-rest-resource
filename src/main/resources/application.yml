@@ -43,11 +43,11 @@ spring:
         time_zone: UTC
     show-sql: true
   datasource:
-    username: customer-user
-    password: secret
+    username: ${POSTGRES_USER:postgres}
+    password: ${POSTGRES_PASSWORD:secret}
     platform: postgres
     driverClassName: org.postgresql.Driver
-    url: jdbc:postgresql://${POSTGRES_HOST:localhost}:5432/customer-db
+    url: jdbc:postgresql://${POSTGRES_HOST:localhost}:5432/${POSTGRES_DB:postgres}
     initialization-mode: always
     schema: classpath:/db/scripts/create-postgres-schema.sql
     separator: ";;"

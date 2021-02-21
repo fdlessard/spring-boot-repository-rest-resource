@@ -6,8 +6,8 @@ services:
     ports:
       - '5432:5432'
     environment:
-      - 'POSTGRES_DB=customer-db'
-      - 'POSTGRES_USER=customer-user'
+      - 'POSTGRES_DB=postgres'
+      - 'POSTGRES_USER=postgres'
       - 'POSTGRES_PASSWORD=secret'
 
   customer:
