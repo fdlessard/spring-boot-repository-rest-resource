@@ -1,0 +1,30 @@
+version: '3.8'
+services:
+  postgres-db:
+    image: postgres:12.5
+    container_name: postgres-container
+    ports:
+      - '5432:5432'
+    environment:
+      - 'POSTGRES_DB=postgres'
+      - 'POSTGRES_USER=postgres'
+      - 'POSTGRES_PASSWORD=secret'
+
+  customer:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: customer-image
+    container_name: customer-container
+    expose:
+      - "8080/tcp"
+      - "5005/tcp"
+    ports:
+      - 8080:8080
+      - 5005:5005
+    environment:
+      - 'WAIT_HOSTS=postgres:5432'
+      - 'POSTGRES_HOST=postgres-db'
+    depends_on:
+      - postgres-db
+
