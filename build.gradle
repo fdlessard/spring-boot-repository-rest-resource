@@ -12,6 +12,13 @@ configurations {
     compileOnly {
         extendsFrom annotationProcessor
     }
+    integrationTestImplementation.extendsFrom testImplementation
+    integrationTestRuntimeOnly.extendsFrom testRuntimeOnly
+    integrationTestAnnotationProcessor.extendsFrom testAnnotationProcessor
+}
+
+springBoot  {
+    buildInfo()
 }
 
 repositories {
@@ -36,6 +43,19 @@ dependencies {
     implementation 'org.postgresql:postgresql'
     implementation 'org.liquibase:liquibase-core:4.2.2'
     implementation 'pl.project13.maven:git-commit-id-plugin:4.0.2'
+
+    annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+
+
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+    testImplementation 'org.testcontainers:junit-jupiter:1.15.1'
+    testImplementation 'org.testcontainers:postgresql:1.15.1'
+    testImplementation 'org.testcontainers:localstack:1.15.1'
+
+    integrationTestImplementation 'org.projectlombok:lombok'
+    integrationTestAnnotationProcessor 'org.projectlombok:lombok'
 }
 
 dependencyManagement {
@@ -46,4 +66,70 @@ dependencyManagement {
 
 test {
     useJUnitPlatform()
+    testLogging {
+        exceptionFormat = 'full'
+        showExceptions true
+        showCauses true
+        showStackTraces true
+        events 'passed', "skipped", 'failed', 'standardError', 'standardOut'
+    }
+    reports {
+        junitXml.enabled = true
+        junitXml.outputLocation = file("build/test-results/unitTest")
+        html.enabled = true
+        html.destination = file("build/reports/tests/unitTest")
+        binaryResultsDirectory = file("build/test-results/unitTest/binary")
+    }
+/*    jacoco {
+        enabled = true
+        ignoreFailures = false
+    }*/
+    afterSuite { desc, result ->
+        if (!desc.parent) {
+            println "\nUnit Test result: ${result.resultType}"
+            println "Test summary: ${result.testCount} tests, " +
+                    "${result.successfulTestCount} succeeded, " +
+                    "${result.failedTestCount} failed, " +
+                    "${result.skippedTestCount} skipped"
+        }
+    }
+}
+
+sourceSets {
+    integrationTest {
+        java.srcDir 'src/it/java'
+        resources.srcDir 'src/it/resources'
+        compileClasspath += sourceSets.main.output + sourceSets.test.output + sourceSets.test.compileClasspath
+        runtimeClasspath += sourceSets.integrationTest.output + sourceSets.integrationTest.compileClasspath  + sourceSets.test.runtimeClasspath
+    }
+}
+
+task integrationTest(type: Test) {
+    useJUnitPlatform()
+    description = 'Runs the integration tests.'
+    group = 'verification'
+    classpath = sourceSets.integrationTest.runtimeClasspath
+    testClassesDirs = sourceSets.integrationTest.output.classesDirs
+    outputs.upToDateWhen { false }
+    mustRunAfter test
+    check.dependsOn integrationTest // if you only want unit test, comment
+    //dependsOn jar
+
+    testLogging {
+        exceptionFormat = 'full'
+        showExceptions true
+        showCauses true
+        showStackTraces true
+        events 'passed', "skipped", 'failed', 'standardError', 'standardOut'
+    }
+
+    afterSuite { desc, result ->
+        if (!desc.parent) {
+            println "\nIntegration Test result: ${result.resultType}"
+            println "Test summary: ${result.testCount} tests, " +
+                    "${result.successfulTestCount} succeeded, " +
+                    "${result.failedTestCount} failed, " +
+                    "${result.skippedTestCount} skipped"
+        }
+    }
 }

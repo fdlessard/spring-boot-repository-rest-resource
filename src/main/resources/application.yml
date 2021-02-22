@@ -66,5 +66,30 @@ spring:
     serialization:
       write_dates_as_timestamps: false
 
+---
+# Local Development profile: PostgreSQL
+spring:
+  config:
+    activate:
+      on-profile: development
+  application:
+    name: customer-development
 
+---
+# Integration test profile
+spring:
+  config:
+    activate:
+      on-profile: integration
+
+  application:
+    name: customer-integration
+  main:
+    banner-mode: "off"
+
+  datasource:
+    url: ${DB_URL}
+    schema: classpath:/db/scripts/create-postgres-schema.sql
+    username: postgres
+    password: secret
 

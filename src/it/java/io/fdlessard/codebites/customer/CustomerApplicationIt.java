@@ -13,25 +13,19 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
+
+@ActiveProfiles("integration")
 @SpringBootTest
-@ActiveProfiles("development-h2")
-@AutoConfigureMockMvc
-class CustomerApplicationIt {
-
-    @Autowired
-    private MockMvc mockMvc;
-
-    @BeforeEach
-    void beforeEach() {
-    }
+@ExtendWith(SpringExtension.class)
+public class CustomerApplicationIt extends BaseIt{
 
     @Test
-    void get() throws Exception {
-
-        mockMvc.perform(MockMvcRequestBuilders.get("/customers/1").contentType(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk())
-                .andExpect(content().contentType("application/hal+json"));
-
+    public void contextLoads() {
     }
+
 }
 
