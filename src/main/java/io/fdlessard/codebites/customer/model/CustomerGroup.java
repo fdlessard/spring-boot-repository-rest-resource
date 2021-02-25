@@ -3,9 +3,11 @@ package io.fdlessard.codebites.customer.model;
 import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 import lombok.AllArgsConstructor;
@@ -33,4 +35,8 @@ public class CustomerGroup extends BaseEntity {
       inverseJoinColumns = @JoinColumn(name = "customer_id")
   )
   private Set<Customer> customers;
+
+  @OneToOne(fetch = FetchType.EAGER)
+  @JoinColumn(name = "main_customer_id", columnDefinition="bigint")
+  private Customer mainCustomer;
 }

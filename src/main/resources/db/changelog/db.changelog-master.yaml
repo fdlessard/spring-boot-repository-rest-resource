@@ -39,6 +39,7 @@ databaseChangeLog:
             columns:
               - column: { name: id, type: bigserial, constraints: { primaryKey: true, nullable: false } }
               - column: { name: version, type: int, defaultValueNumeric: 0, constraints: { nullable: false } }
+              - column: { name: main_customer_id, type: bigint, constraints: { nullable: true }}
               - column: { name: name, type: varchar(50) }
 
         - createTable:

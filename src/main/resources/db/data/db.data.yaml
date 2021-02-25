@@ -74,6 +74,9 @@ databaseChangeLog:
               - column:
                   name: name
                   type: string
+              - column:
+                  name: main_customer_id
+                  type: numericgit
 
         - loadData:
             tableName: customer_group_customer

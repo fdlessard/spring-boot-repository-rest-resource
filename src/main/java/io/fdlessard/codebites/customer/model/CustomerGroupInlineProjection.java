@@ -14,4 +14,6 @@ public interface CustomerGroupInlineProjection {
   String getName();
 
   Set<Customer> getCustomers();
+
+  Customer getMainCustomer();
 }
