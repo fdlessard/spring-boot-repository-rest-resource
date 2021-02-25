@@ -41,6 +41,12 @@ databaseChangeLog:
               - column: { name: version, type: int, defaultValueNumeric: 0, constraints: { nullable: false } }
               - column: { name: main_customer_id, type: bigint, constraints: { nullable: true }}
               - column: { name: name, type: varchar(50) }
+        - addForeignKeyConstraint:
+            baseColumnNames: main_customer_id
+            baseTableName: customer_group
+            constraintName: fk_customer_group_main_customer
+            referencedTableName: customer
+            referencedColumnNames: id
 
         - createTable:
             tableName: customer_group_customer
