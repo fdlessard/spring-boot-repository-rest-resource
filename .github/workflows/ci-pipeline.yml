@@ -40,4 +40,4 @@ jobs:
           chmod +x gradlew
           ./gradlew bootBuildImage
       - name: Push to Docker Hub
-        run: docker push fdlessard/spring-boot-repository-rest-resource
+        run: docker push fdlessard/spring-boot-repository-rest-resource::0.0.1-SNAPSHOT
