@@ -34,7 +34,6 @@ public class Address extends BaseEntity implements Serializable {
   @Column(name = "country")
   private String country;
 
-
   @ManyToOne
   @JoinColumn(name="customer_id")
   private Customer customer;
