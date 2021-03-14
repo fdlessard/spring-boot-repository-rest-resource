@@ -1,7 +1,6 @@
 ## spring-boot-repository-rest-resource
 
-[![Build Status](https://travis-ci.org/fdlessard/spring-boot-repository-rest-resource.svg)](https://travis-ci.org/fdlessard/spring-boot-repository-rest-resource)
-[![License](http://img.shields.io/:license-mit-blue.svg)](https://github.com/fdlessard/spring-boot-repository-rest-resource/blob/master/LICENSE)
+[![CI Pipeline](https://github.com/fdlessard/spring-boot-repository-rest-resource/actions/workflows/ci-pipeline.yml/badge.svg)](https://github.com/fdlessard/spring-boot-repository-rest-resource/actions/workflows/ci-pipeline.yml)[![License](http://img.shields.io/:license-mit-blue.svg)](https://github.com/fdlessard/spring-boot-repository-rest-resource/blob/master/LICENSE)
 
 ## Example of SpringData @RepositoryRestResource with JSR 303 (Java Bean Validation) and JsonSerialization annotation
 
