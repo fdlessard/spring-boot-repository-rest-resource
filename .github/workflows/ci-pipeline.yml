@@ -9,7 +9,7 @@ jobs:
     name: Build and Test
     runs-on: ubuntu-20.04
     steps:
-      - name: Check out repository
+      - name: Check out Repository
         uses: actions/checkout@v2
       - name: Set up JDK 15
         uses: actions/setup-java@v1
