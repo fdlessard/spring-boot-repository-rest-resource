@@ -22,8 +22,9 @@ springBoot  {
 }
 
 bootBuildImage {
-    imageName = "fdlessard/${project.name}"
+    imageName = "fdlessard/${project.name}:0.0.1-SNAPSHOT"
 }
+
 repositories {
     mavenCentral()
 }
