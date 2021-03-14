@@ -28,7 +28,9 @@ logging:
 
 spring:
   application:
-    name: customer-application
+    name: customer-integration
+  main:
+    banner-mode: "off"
   output:
     ansi:
       enabled: always
@@ -45,11 +47,7 @@ spring:
         time_zone: UTC
     show-sql: true
   datasource:
-    username: ${POSTGRES_USER:postgres}
-    password: ${POSTGRES_PASSWORD:secret}
-    platform: postgres
-    driverClassName: org.postgresql.Driver
-    url: jdbc:postgresql://${POSTGRES_HOST:localhost}:5432/${POSTGRES_DB:postgres}
+    url: jdbc:tc:postgresql:13:///
     initialization-mode: always
     schema: classpath:/db/scripts/create-postgres-schema.sql
     separator: ";;"
@@ -67,5 +65,3 @@ spring:
     time-zone: UTC
     serialization:
       write_dates_as_timestamps: false
-
-

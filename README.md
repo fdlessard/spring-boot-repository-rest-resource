@@ -115,7 +115,8 @@ docker-compose up
 
 Cloud Native Buildpacks (CNB) 
 
-https://solocoding.dev/blog/eng_docker_buildpacks
-https://github.com/paketo-buildpacks/spring-boot
+ - https://solocoding.dev/blog/eng_docker_buildpacks
+ - https://github.com/paketo-buildpacks/spring-boot
 
-https://blog.frankel.ch/hitchhiker-guide-containerizing-java-apps/
+ - https://blog.frankel.ch/hitchhiker-guide-containerizing-java-apps/
+ - https://zoltanaltfatter.com/2020/12/26/build-images-with-cloud-native-buildpacks/
