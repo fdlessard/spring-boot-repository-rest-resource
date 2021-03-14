@@ -24,7 +24,7 @@ jobs:
     needs: [build]
     runs-on: ubuntu-20.04
     steps:
-      - name Check out Repository
+      - name: Check out Repository
         uses: actions/checkout@v2
       - name: Set up JDK 15
         uses: actions/setup-java@v1
