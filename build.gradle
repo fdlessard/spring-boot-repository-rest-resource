@@ -21,6 +21,9 @@ springBoot  {
     buildInfo()
 }
 
+bootBuildImage {
+    imageName = "fdlessard/${project.name}"
+}
 repositories {
     mavenCentral()
 }
