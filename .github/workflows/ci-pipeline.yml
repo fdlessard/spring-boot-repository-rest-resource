@@ -19,6 +19,8 @@ jobs:
         run: |
           chmod +x gradlew
           ./gradlew build
+      - name: jacoco-badge-generator
+        uses: cicirello/jacoco-badge-generator@v2.0.1
   package:
     name: Package and Publish Image
     needs: [ build ]
