@@ -10,6 +10,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.Valid;
 import javax.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -28,15 +29,11 @@ public class CustomerGroup extends BaseEntity {
   @Size(min = 2, message = "lastName must have more thant 2 characters")
   private String name;
 
+  @Valid
   @ManyToMany(mappedBy = "customerGroups")
-/*  @JoinTable(
-      schema = "public",
-      name = "customer_group_customer",
-      joinColumns = @JoinColumn(name = "customer_group_id"),
-      inverseJoinColumns = @JoinColumn(name = "customer_id")
-  )*/
   private List<Customer> customers;
 
+  @Valid
   @OneToOne(fetch = FetchType.EAGER)
   @JoinColumn(name = "main_customer_id", columnDefinition="bigint")
   private Customer mainCustomer;

@@ -1,7 +1,7 @@
 package io.fdlessard.codebites.customer.model;
-import org.springframework.data.rest.core.config.Projection;
 
-import java.util.Set;
+import java.util.List;
+import org.springframework.data.rest.core.config.Projection;
 
 @Projection(
         name = "customerInlineProjection",
@@ -15,5 +15,5 @@ public interface CustomerInlineProjection {
 
     String getFirstName();
 
-    Set<Address> getAddresses();
+    List<Address> getAddresses();
 }

@@ -1,6 +1,6 @@
 package io.fdlessard.codebites.customer.model;
 
-import java.util.Set;
+import java.util.List;
 import org.springframework.data.rest.core.config.Projection;
 
 @Projection(
@@ -13,7 +13,7 @@ public interface CustomerGroupInlineProjection {
 
   String getName();
 
-  Set<Customer> getCustomers();
+  List<Customer> getCustomers();
 
   Customer getMainCustomer();
 }

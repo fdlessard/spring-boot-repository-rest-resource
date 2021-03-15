@@ -1,5 +1,5 @@
 plugins {
-    id 'org.springframework.boot' version '2.4.2'
+    id 'org.springframework.boot' version '2.4.3'
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
     id 'java'
 }
@@ -39,6 +39,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-rest'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-validation'
+    implementation 'org.apache.commons:commons-lang3:3.9'
     compileOnly 'org.projectlombok:lombok'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     annotationProcessor 'org.projectlombok:lombok'
@@ -52,11 +53,24 @@ dependencies {
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
 
 
+    implementation 'org.apache.commons:commons-lang3:3.9'
+    implementation 'org.apache.commons:commons-collections4:4.4'
+    implementation 'org.projectlombok:lombok'
+    testImplementation 'org.projectlombok:lombok'
+    integrationTestImplementation 'org.projectlombok:lombok'
+
+    annotationProcessor 'org.projectlombok:lombok'
+    testAnnotationProcessor 'org.projectlombok:lombok:'
+    integrationTestAnnotationProcessor 'org.projectlombok:lombok'
+
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+    testImplementation 'nl.jqno.equalsverifier:equalsverifier:3.5.1'
 
     testImplementation 'org.testcontainers:junit-jupiter:1.15.1'
     testImplementation 'org.testcontainers:postgresql:1.15.1'
     testImplementation 'org.testcontainers:localstack:1.15.1'
+
 
     integrationTestImplementation 'org.projectlombok:lombok'
     integrationTestAnnotationProcessor 'org.projectlombok:lombok'
