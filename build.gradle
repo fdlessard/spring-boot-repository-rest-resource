@@ -2,8 +2,8 @@ plugins {
     id 'org.springframework.boot' version '2.4.3'
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
     id 'java'
-    id "org.sonarqube" version "3.1.1"
-
+    id 'jacoco'
+    id 'org.sonarqube' version '3.1.1'
 }
 
 group = 'io.fdlessard.codebites.customer'
@@ -33,6 +33,13 @@ repositories {
 }
 
 ext {
+    jacocoToolVersion = '0.8.6'
+    jacocoInstructionCoverageMinimum = 0.90
+    jacocoLineCoverageMinimum = 0.90
+    jacocoMethodCoverageMinimum = 0.90
+    jacocoClassCoverageMinimum = 0.90
+    jacocoBranchCoverageMinimum = 0.85
+    jacocoComplexityCoverageMinimum = 0.50
     set('testcontainersVersion', "1.15.1")
 }
 
@@ -55,7 +62,6 @@ dependencies {
     annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
 
-
     implementation 'org.apache.commons:commons-lang3:3.9'
     implementation 'org.apache.commons:commons-collections4:4.4'
     implementation 'org.projectlombok:lombok'
@@ -74,7 +80,6 @@ dependencies {
     testImplementation 'org.testcontainers:postgresql:1.15.1'
     testImplementation 'org.testcontainers:localstack:1.15.1'
 
-
     integrationTestImplementation 'org.projectlombok:lombok'
     integrationTestAnnotationProcessor 'org.projectlombok:lombok'
 }
@@ -87,6 +92,8 @@ dependencyManagement {
 
 test {
     useJUnitPlatform()
+    check.dependsOn jacocoTestCoverageVerification
+    finalizedBy jacocoTestReport
     testLogging {
         exceptionFormat = 'full'
         showExceptions true
@@ -101,10 +108,10 @@ test {
         html.destination = file("build/reports/tests/unitTest")
         binaryResultsDirectory = file("build/test-results/unitTest/binary")
     }
-/*    jacoco {
+    jacoco {
         enabled = true
         ignoreFailures = false
-    }*/
+    }
     afterSuite { desc, result ->
         if (!desc.parent) {
             println "\nUnit Test result: ${result.resultType}"
@@ -134,8 +141,6 @@ task integrationTest(type: Test) {
     outputs.upToDateWhen { false }
     mustRunAfter test
     check.dependsOn integrationTest // if you only want unit test, comment
-    //dependsOn jar
-
     testLogging {
         exceptionFormat = 'full'
         showExceptions true
@@ -153,4 +158,60 @@ task integrationTest(type: Test) {
                     "${result.skippedTestCount} skipped"
         }
     }
+}
+
+jacoco {
+    toolVersion = jacocoToolVersion
+}
+
+jacocoTestCoverageVerification {
+    violationRules {
+        rule {
+            enabled = true
+            element = 'BUNDLE'
+            excludes = ['*It.class', '*It.java']
+            limit {
+                counter = 'INSTRUCTION'
+                value = 'COVEREDRATIO'
+                minimum = jacocoInstructionCoverageMinimum
+            }
+            limit {
+                counter = 'LINE'
+                value = 'COVEREDRATIO'
+                minimum = jacocoLineCoverageMinimum
+            }
+            limit {
+                counter = 'METHOD'
+                value = 'COVEREDRATIO'
+                minimum = jacocoMethodCoverageMinimum
+            }
+            limit {
+                counter = 'CLASS'
+                value = 'COVEREDRATIO'
+                minimum = jacocoClassCoverageMinimum
+            }
+            limit {
+                counter = 'BRANCH'
+                value = 'COVEREDRATIO'
+                minimum = jacocoBranchCoverageMinimum
+            }
+            limit {
+                counter = 'COMPLEXITY'
+                value = 'COVEREDRATIO'
+                minimum = jacocoComplexityCoverageMinimum
+            }
+        }
+    }
+}
+
+jacocoTestReport {
+    reports {
+        xml.enabled true
+        csv.enabled true
+        html.enabled = true
+    }
+}
+
+sonarqube {
+
 }
