@@ -113,6 +113,12 @@ test {
     }
 }
 
+
+task packageTests(type: Jar) {
+    dependsOn testClasses
+    from sourceSets.test.output
+}
+
 sourceSets {
     integrationTest {
         java.srcDir 'src/it/java'

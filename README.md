@@ -119,3 +119,6 @@ Cloud Native Buildpacks (CNB)
 
  - https://blog.frankel.ch/hitchhiker-guide-containerizing-java-apps/
  - https://zoltanaltfatter.com/2020/12/26/build-images-with-cloud-native-buildpacks/
+
+
+ad36b240e45f4850b2d71dc63a00d660
