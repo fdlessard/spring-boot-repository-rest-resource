@@ -1,5 +1,10 @@
 pipeline {
     agent any
+
+    tools {
+        jdk 'jdk_15.0.2'
+
+    }
     stages {
         stage('Clean') {
             steps {
