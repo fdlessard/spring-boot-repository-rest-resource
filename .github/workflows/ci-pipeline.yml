@@ -7,7 +7,7 @@ on:
 jobs:
   build:
     name: Build and Test
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
       - name: Check out Repository
         uses: actions/checkout@v2
@@ -22,7 +22,7 @@ jobs:
   package:
     name: Package and Publish Image
     needs: [ build ]
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
       - name: Check out Repository
         uses: actions/checkout@v2
