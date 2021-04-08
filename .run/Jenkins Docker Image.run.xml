@@ -2,7 +2,7 @@
   <configuration default="false" name="Jenkins Docker Image" type="docker-deploy" factoryName="docker-image" server-name="Docker">
     <deployment type="docker-image">
       <settings>
-        <option name="imageTag" value="jenkins/jenkins:lts" />
+        <option name="imageTag" value="jenkins/jenkins:lts-jdk11" />
         <option name="command" value="" />
         <option name="containerName" value="my-jenkins" />
         <option name="entrypoint" value="" />
