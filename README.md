@@ -121,6 +121,7 @@ Cloud Native Buildpacks (CNB)
  - https://zoltanaltfatter.com/2020/12/26/build-images-with-cloud-native-buildpacks/
 
 
-ad36b240e45f4850b2d71dc63a00d660
 
-379e29cc825c41e89b4057e9a294f305
+
+
+be82c342bcb147be851d82a5a829fdbf
