@@ -5,6 +5,8 @@ plugins {
     id 'jacoco'
     id 'checkstyle'
     id 'pmd'
+    id "de.aaschmid.cpd" version "3.2"
+    id "com.github.spotbugs" version "4.7.0"
     id 'org.sonarqube' version '3.1.1'
 }
 
@@ -41,6 +43,12 @@ checkstyle {
 
 pmd {
     ignoreFailures = true
+}
+
+spotbugs {
+    toolVersion = '4.2.3'
+    ignoreFailures = true
+
 }
 
 ext {
