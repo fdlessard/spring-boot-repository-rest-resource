@@ -34,11 +34,11 @@ repositories {
 
 ext {
     jacocoToolVersion = '0.8.6'
-    jacocoInstructionCoverageMinimum = 0.90
-    jacocoLineCoverageMinimum = 0.90
-    jacocoMethodCoverageMinimum = 0.90
-    jacocoClassCoverageMinimum = 0.90
-    jacocoBranchCoverageMinimum = 0.85
+    jacocoInstructionCoverageMinimum = 0.60
+    jacocoLineCoverageMinimum =  0.60
+    jacocoMethodCoverageMinimum =  0.60
+    jacocoClassCoverageMinimum =  0.60
+    jacocoBranchCoverageMinimum =  0.60
     jacocoComplexityCoverageMinimum = 0.50
     set('testcontainersVersion', "1.15.1")
 }

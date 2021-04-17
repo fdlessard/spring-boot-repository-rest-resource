@@ -124,4 +124,66 @@ Cloud Native Buildpacks (CNB)
 
 
 
-be82c342bcb147be851d82a5a829fdbf
+48c84ece88a049729e28421607eca26f
+
+
+https://www.testcontainers.org/supported_docker_environment/continuous_integration/dind_patterns/
+https://www.gitmemory.com/issue/testcontainers/testcontainers-java/613/466072002
+https://github.com/testcontainers/testcontainers-java/issues/613
+
+https://stackoverflow.com/questions/59579845/testcontainers-running-testcontainers-tests-inside-docker-running-docker-ins
+https://jpetazzo.github.io/2015/09/03/do-not-use-docker-in-docker-for-ci/
+
+
+docker run -p 8081:8080 -p 50000:50000 -v $PWD:$PWD -w $PWD -v /var/run/docker.sock:/var/run/docker.sock -v /Users/fdlessard/jenkins_home:/var/jenkins_home jenkins/jenkins:lts-jdk11
+
+
+
+
+
+https://www.jenkins.io/doc/book/installing/docker/
+
+
+
+docker network ls
+docker network create jenkins
+
+docker run \
+--name jenkins-docker \
+--rm \
+--detach \
+--privileged \
+--network jenkins \
+--network-alias docker \
+--env DOCKER_TLS_CERTDIR=/certs \
+--volume /Users/fdlessard/jenkins-docker-certs:/certs/client \
+--volume /Users/fdlessard/jenkins-home:/var/jenkins_home \
+--publish 2376:2376 \
+docker:dind \
+--storage-driver overlay2
+
+
+
+
+
+
+docker run \
+--name jenkins-blueocean \
+--rm \
+--detach \
+--network jenkins \
+--env DOCKER_HOST=tcp://docker:2376 \
+--env DOCKER_CERT_PATH=/certs/client \
+--env DOCKER_TLS_VERIFY=1 \
+--publish 8081:8080 \
+--publish 50000:50000 \
+--volume /Users/fdlessard/jenkins-home:/var/jenkins_home \
+--volume /Users/fdlessard/jenkins-docker-certs:/certs/client:ro \
+myjenkins-blueocean:1.1 
+
+
+
+
+
+
+7633f15fa72e452898a5b55c0d536134
