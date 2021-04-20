@@ -1,3 +1,8 @@
+environment {
+  imageName = 'fdlessard/spring-boot-repository-rest-resource'
+  registryCredentialSet = 'dockerhub'
+}
+
 pipeline {
     agent any
 
@@ -49,7 +54,7 @@ pipeline {
                     sh './gradlew cpd'
                     sh './gradlew spotbugsMain'
                     sh './gradlew sonarqube'
-        //            sh './gradlew dependencyCheckAnalyze'
+                    sh './gradlew dependencyCheckAnalyze'
                 }
             }
         }
@@ -69,18 +74,7 @@ pipeline {
             recordIssues enabledForFailure: true, tool: pmdParser(pattern: 'build/reports/pmd/*.xml')
             recordIssues enabledForFailure: true, tool: cpd(pattern: 'build/reports/cpd/*.xml')
             recordIssues enabledForFailure: true, tool: spotBugs(pattern: 'build/reports/spotbugs/*.xml')
-
-
-/*             recordIssues(
-                enabledForFailure: false,
-                tools: [
-      //              checkStyle(pattern: 'build/reports/checkstyle *//*.xml'),
-                    pmdParser(pattern: 'build/reports/pmd *//*.xml'),
-                    cpd(pattern: 'build/reports/cpd *//*.xml'),
-      //          spotBugs(pattern: 'build/reports/spotbugs *//*.xml')
-     //           dependencyCheckPublisher(pattern: 'build/reports/dependency-check-report.xml')
-                ]
-           ) */
+            dependencyCheckPublisher(pattern: 'build/reports/dependency-check-report.xml')
         }
     }
 }
