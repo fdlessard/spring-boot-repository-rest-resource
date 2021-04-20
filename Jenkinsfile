@@ -74,7 +74,7 @@ pipeline {
             recordIssues enabledForFailure: true, tool: pmdParser(pattern: 'build/reports/pmd/*.xml')
             recordIssues enabledForFailure: true, tool: cpd(pattern: 'build/reports/cpd/*.xml')
             recordIssues enabledForFailure: true, tool: spotBugs(pattern: 'build/reports/spotbugs/*.xml')
-            dependencyCheckPublisher(pattern: 'build/reports/dependency-check-report.xml')
+            recordIssues enabledForFailure: true, tool: dependencyCheckPublisher(pattern: 'build/reports/dependency-check-report.xml')
         }
     }
 }
