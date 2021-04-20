@@ -38,6 +38,7 @@ pipeline {
             steps {
                 withGradle {
                     sh './gradlew jacocoTestCoverageVerification'
+                    sh './gradlew sonarqube'
                 }
             }
         }
