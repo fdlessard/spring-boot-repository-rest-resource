@@ -38,7 +38,7 @@ pipeline {
             steps {
                 withGradle {
                     sh './gradlew jacocoTestCoverageVerification'
-                    sh './gradlew sonarqube'
+ //                   sh './gradlew sonarqube'
                 }
             }
         }
@@ -48,8 +48,8 @@ pipeline {
                     sh './gradlew checkstyleMain'
                     sh './gradlew pmdMain'
                     sh './gradlew cpd'
-                    sh './gradlew spotbugsMain'
-        //           sh './gradlew sonarqube'
+         //           sh './gradlew spotbugsMain'
+                    sh './gradlew sonarqube'
         //            sh './gradlew dependencyCheckAnalyze'
                 }
             }
