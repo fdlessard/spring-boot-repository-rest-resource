@@ -66,13 +66,16 @@ pipeline {
                   sourcePattern: 'src/main/java',
                   exclusionPattern: 'src/test*'
             ])
-            recordIssues enabledForFailure: false, tools: [
-                checkStyle(pattern: 'build/reports/checkstyle/*.xml'),
-                pmdParser(pattern: 'build/reports/pmd/*.xml'),
-                cpd(pattern: 'build/reports/cpd/*.xml'),
+            recordIssues(
+                enabledForFailure: false,
+                tools: [
+                    checkStyle(pattern: 'build/reports/checkstyle/*.xml'),
+                    pmdParser(pattern: 'build/reports/pmd/*.xml'),
+                    cpd(pattern: 'build/reports/cpd/*.xml'),
       //          spotBugs(pattern: 'build/reports/spotbugs/*.xml')
      //           dependencyCheckPublisher(pattern: 'build/reports/dependency-check-report.xml')
-            ]
+                ]
+           )
         }
     }
 }
