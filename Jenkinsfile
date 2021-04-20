@@ -38,7 +38,6 @@ pipeline {
             steps {
                 withGradle {
                     sh './gradlew jacocoTestCoverageVerification'
- //                   sh './gradlew sonarqube'
                 }
             }
         }
@@ -48,7 +47,7 @@ pipeline {
                     sh './gradlew checkstyleMain'
                     sh './gradlew pmdMain'
                     sh './gradlew cpd'
-         //           sh './gradlew spotbugsMain'
+                    sh './gradlew spotbugsMain'
                     sh './gradlew sonarqube'
         //            sh './gradlew dependencyCheckAnalyze'
                 }
@@ -69,6 +68,8 @@ pipeline {
             recordIssues enabledForFailure: true, tool: checkStyle(pattern: 'build/reports/checkstyle/*.xml')
             recordIssues enabledForFailure: true, tool: pmdParser(pattern: 'build/reports/pmd/*.xml')
             recordIssues enabledForFailure: true, tool: cpd(pattern: 'build/reports/cpd/*.xml')
+            recordIssues enabledForFailure: true, tool: spotBugs(pattern: 'build/reports/spotbugs/*.xml')
+
 
 /*             recordIssues(
                 enabledForFailure: false,
