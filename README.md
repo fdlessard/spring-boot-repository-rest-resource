@@ -1,4 +1,5 @@
 ## spring-boot-repository-rest-resource
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=io.fdlessard.codebites%3Aspring-boot-repository-rest-resource&metric=alert_status)](https://sonarcloud.io/dashboard?id=io.fdlessard.codebites%3Aspring-boot-repository-rest-resource)
 
 [![CI Pipeline](https://github.com/fdlessard/spring-boot-repository-rest-resource/actions/workflows/ci-pipeline.yml/badge.svg)](https://github.com/fdlessard/spring-boot-repository-rest-resource/actions/workflows/ci-pipeline.yml)[![License](http://img.shields.io/:license-mit-blue.svg)](https://github.com/fdlessard/spring-boot-repository-rest-resource/blob/master/LICENSE)
 
