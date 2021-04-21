@@ -59,7 +59,7 @@ pipeline {
             }
         }
     }
-    stage('Code Coverage') {
+    stage('Build Docker Image and Push') {
             steps {
                 withGradle {
                   sh './gradlew bootBuildImage'
