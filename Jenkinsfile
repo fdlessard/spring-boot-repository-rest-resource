@@ -58,14 +58,15 @@ pipeline {
                 }
             }
         }
-    }
-    stage('Build Docker Image and Push') {
+        stage('Build Docker Image and Push') {
             steps {
                 withGradle {
                   sh './gradlew bootBuildImage'
                 }
             }
+       }
     }
+
     post {
         always {
             junit 'build/test-results/unitTest/*.xml'
