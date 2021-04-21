@@ -59,6 +59,13 @@ pipeline {
             }
         }
     }
+    stage('Code Coverage') {
+            steps {
+                withGradle {
+                  sh './gradlew bootBuildImage'
+                }
+            }
+    }
     post {
         always {
             junit 'build/test-results/unitTest/*.xml'
