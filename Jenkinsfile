@@ -78,10 +78,7 @@ pipeline {
                   sourcePattern: 'src/main/java',
                   exclusionPattern: 'src/test*'
             ])
-            step([
-                  $class: 'dependencyCheckPublisher',
-                  pattern: 'build/reports/dependency-check-report.xml'
-            ])
+            dependencyCheckPublisher pattern: 'dependency-check-report.xml'
             recordIssues enabledForFailure: true, tool: checkStyle(pattern: 'build/reports/checkstyle/*.xml')
             recordIssues enabledForFailure: true, tool: pmdParser(pattern: 'build/reports/pmd/*.xml')
             recordIssues enabledForFailure: true, tool: cpd(pattern: 'build/reports/cpd/*.xml')
