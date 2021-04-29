@@ -13,8 +13,8 @@ pipeline {
         stage('Tests') {
             steps {
                 parallel {
-                    withGradle { sh './gradlew test' },
-                    withGradle { sh './gradlew integrationTest' }
+                    "Unit Tests": { withGradle { sh './gradlew test' } },
+                    "Integration Tests": { withGradle { sh './gradlew integrationTest' } }
                 }
             }
         }
