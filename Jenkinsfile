@@ -8,12 +8,7 @@ pipeline {
     tools { jdk 'openjdk-15.0.2' }
     stages {
         stage('Compilation') {
-            steps {
-                withGradle {
-                    sh './gradlew clean'
-                    sh './gradlew integrationTestClasses'
-                }
-            }
+            steps { withGradle { sh './gradlew clean integrationTestClasses' } }
         }
         stage('Unit Tests') {
             steps { withGradle { sh './gradlew test' } }
