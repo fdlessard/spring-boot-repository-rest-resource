@@ -42,7 +42,7 @@ pipeline {
                 }
             }
         }
-        stage('Build & Publish Docker Imag') {
+        stage('Build & Publish Docker Image') {
             steps {
                 withGradle { sh './gradlew bootBuildImage' }
             }
