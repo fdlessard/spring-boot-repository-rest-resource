@@ -7,7 +7,7 @@ pipeline {
     agent any
     tools { jdk 'openjdk-15.0.2' }
     stages {
-        stage('Compiling') {
+        stage('Compilation') {
             steps {
                 withGradle {
                     sh './gradlew clean'
@@ -16,19 +16,13 @@ pipeline {
             }
         }
         stage('Unit Tests') {
-            steps {
-                withGradle { sh './gradlew test' }
-            }
+            steps { withGradle { sh './gradlew test' } }
         }
         stage('Integration Tests') {
-            steps {
-                withGradle { sh './gradlew integrationTest' }
-            }
+            steps { withGradle { sh './gradlew integrationTest' } }
         }
         stage('Code Coverage Verification') {
-            steps {
-                withGradle { sh './gradlew jacocoTestCoverageVerification' }
-            }
+            steps { withGradle { sh './gradlew jacocoTestCoverageVerification' } }
         }
         stage('Code Analysis') {
             steps {
@@ -43,9 +37,7 @@ pipeline {
             }
         }
         stage('Build & Publish Docker Image') {
-            steps {
-                withGradle { sh './gradlew bootBuildImage' }
-            }
+            steps { withGradle { sh './gradlew bootBuildImage' } }
        }
     }
     post {
