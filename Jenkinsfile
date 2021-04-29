@@ -32,6 +32,7 @@ pipeline {
                     "DependencyCheck" : { withGradle { sh './gradlew dependencyCheckAnalyze' } }
               )
             }
+        }
         stage('Build & Publish Docker Image') {
             steps { withGradle { sh './gradlew bootBuildImage' } }
        }
