@@ -10,11 +10,13 @@ pipeline {
         stage('Compilation') {
             steps { withGradle { sh './gradlew clean integrationTestClasses' } }
         }
-        stage('Unit Tests') {
-            steps { withGradle { sh './gradlew test' } }
-        }
-        stage('Integration Tests') {
-            steps { withGradle { sh './gradlew integrationTest' } }
+        stage('Tests') {
+            steps {
+                parallel {
+                    withGradle { sh './gradlew test' },
+                    withGradle { sh './gradlew integrationTest' }
+                }
+            }
         }
         stage('Code Coverage Verification') {
             steps { withGradle { sh './gradlew jacocoTestCoverageVerification' } }
