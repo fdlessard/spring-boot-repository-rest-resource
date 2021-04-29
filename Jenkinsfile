@@ -20,16 +20,7 @@ pipeline {
             steps { withGradle { sh './gradlew jacocoTestCoverageVerification' } }
         }
         stage('Code Analysis') {
-            steps {
-                withGradle {
-                    sh './gradlew checkstyleMain'
-                    sh './gradlew pmdMain'
-                    sh './gradlew cpd'
-                    sh './gradlew spotbugsMain'
-                    sh './gradlew sonarqube'
-                    sh './gradlew dependencyCheckAnalyze'
-                }
-            }
+            steps { withGradle { sh './gradlew checkstyleMain pmdMain cpd spotbugsMain sonarqube dependencyCheckAnalyze' } }
         }
         stage('Build & Publish Docker Image') {
             steps { withGradle { sh './gradlew bootBuildImage' } }
