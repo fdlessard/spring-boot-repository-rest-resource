@@ -5,48 +5,32 @@ environment {
 
 pipeline {
     agent any
-
-    tools {
-        jdk 'openjdk-15.0.2'
-
-    }
+    tools { jdk 'openjdk-15.0.2' }
     stages {
-        stage('Clean') {
-            steps {
-                withGradle {
-                    sh './gradlew clean'
-                }
-            }
-        }
         stage('Compiling') {
             steps {
                 withGradle {
+                    sh './gradlew clean'
                     sh './gradlew integrationTestClasses'
                 }
             }
         }
         stage('Unit Tests') {
             steps {
-                withGradle {
-                    sh './gradlew test'
-                }
+                withGradle { sh './gradlew test' }
             }
         }
         stage('Integration Tests') {
             steps {
-                withGradle {
-                    sh './gradlew integrationTest'
-                }
+                withGradle { sh './gradlew integrationTest' }
             }
         }
-        stage('Code Coverage') {
+        stage('Code Coverage Verification') {
             steps {
-                withGradle {
-                    sh './gradlew jacocoTestCoverageVerification'
-                }
+                withGradle { sh './gradlew jacocoTestCoverageVerification' }
             }
         }
-        stage('Static Code Analysis') {
+        stage('Code Analysis') {
             steps {
                 withGradle {
                     sh './gradlew checkstyleMain'
@@ -58,15 +42,12 @@ pipeline {
                 }
             }
         }
-        stage('Build Docker Image and Push') {
+        stage('Build & Publish Docker Imag') {
             steps {
-                withGradle {
-                  sh './gradlew bootBuildImage'
-                }
+                withGradle { sh './gradlew bootBuildImage' }
             }
        }
     }
-
     post {
         always {
             junit 'build/test-results/unitTest/*.xml'

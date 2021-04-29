@@ -143,7 +143,7 @@ docker run -p 8081:8080 -p 50000:50000 -v $PWD:$PWD -w $PWD -v /var/run/docker.s
 
 
 https://www.jenkins.io/doc/book/installing/docker/
-
+https://www.jenkins.io/doc/book/using/using-agents/
 
 
 docker network ls
@@ -183,7 +183,7 @@ docker run \
 myjenkins-blueocean:1.1 
 
 
-
+docker run -d --rm --name=agent1 -p 22:22 -e "JENKINS_AGENT_SSH_PUBKEY=AAAAB3NzaC1yc2EAAAADAQABAAABgQC33TRjXLikGhX1wLldGB+0Ucfnez7+G0KNS/JlMLTdXeeIccjapnIUfPR2+mS5Ew4x9pLLG1Szi/ka3XePNosMA0pQJTKtaA0jYHEbim+yzrA684ITLZMB5sthaEEPVdOsGv3Rbkvjlzn7JHY8mzz/tGlHy9wuEda68+jEjWFVTl2HmTpz2BwDUuefYQSL8fDVul6FcKpId7DS+LDlFkZRZ6G44z+iVcoTMQA3SRghiDqSi+VhHTwNbKuDtmmZcEgJaM4Y3AcYUVvis9IPtzgvoD86hvqQFLNhjXb5iUDzDwqkFVTbooVbhv0/SRsqCyeihBoMCFZg1vTScIhGef2q4Bype3sSprpZJPlRxQQr+lmblg6xurcS4oH2eOk6w7aztyb+77IVWbtGq+JCO/XlRrQtEm2o27DOQA6nC8ltohEGgqZF30VVqMTB5rVq9zEhCUL+MLmXNlAUacAaPM3RF0j1GXPdklEJTx7MSei/QKMjQdlvdbC6rKEpSJVxYFU=" jenkins/ssh-agent:alpine
 
 
 
