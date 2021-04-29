@@ -12,10 +12,10 @@ pipeline {
         }
         stage('Tests') {
             steps {
-                parallel {
+                parallel (
                     "Unit Tests": { withGradle { sh './gradlew test' } },
                     "Integration Tests": { withGradle { sh './gradlew integrationTest' } }
-                }
+                )
             }
         }
         stage('Code Coverage Verification') {
