@@ -7,7 +7,7 @@ environment {
 pipeline {
     agent any
     tools {
-      jdk 'openjdk-15.0.2+7'
+      jdk 'jdk-15.0.2+7'
       gradle 'gradle-6.8.3'
     }
     stages {
