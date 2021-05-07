@@ -1,11 +1,14 @@
 environment {
   imageName = 'fdlessard/spring-boot-repository-rest-resource'
   registryCredentialSet = 'dockerhub'
+  JAVA_HOME = 'C:\Program Files\Java\open-jdk-15.0.2'
 }
 
 pipeline {
     agent any
-    tools {jdk 'openjdk-15.0.2'}
+    tools {
+      jdk 'openjdk-15.0.2'
+    }
     stages {
         stage('Compilation') {
             steps { withGradle { sh './gradlew clean integrationTestClasses' } }
