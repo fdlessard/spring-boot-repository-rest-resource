@@ -1,7 +1,7 @@
 environment {
   imageName = 'fdlessard/spring-boot-repository-rest-resource'
   registryCredentialSet = 'dockerhub'
-  JAVA_HOME = 'C:\Program Files\Java\open-jdk-15.0.2'
+  JAVA_HOME = 'C:\\Program Files\\Java\\open-jdk-15.0.2'
 }
 
 pipeline {
