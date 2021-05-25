@@ -8,17 +8,7 @@ management:
   endpoints:
     web:
       exposure:
-        include: beans, health, loggers
-    health:
-      enabled: true
-    loggers:
-      enabled: true
-    beans:
-      enabled: true
-    liquibase:
-      enabled: true
-    git:
-      enbled: true
+        include: "*"
 
 logging:
   level.root: INFO
@@ -46,8 +36,6 @@ spring:
   datasource:
     url: jdbc:tc:postgresql:13:///
     initialization-mode: always
-    schema: classpath:/db/scripts/create-postgres-schema.sql
-    separator: ";;"
   liquibase:
     enabled: on
     drop-first: on

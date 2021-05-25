@@ -68,15 +68,3 @@ databaseChangeLog:
 
   - include:
       file: "db/data/db.data.yaml"
-
-  - changeSet:
-      id: update_sequence_id
-      author: fdlessard@gmail.com
-      changes:
-        - sqlFile:
-            dbms: postgresql
-            encoding: UTF-8
-            path: ../scripts/update_sequence_id.sql
-            relativeToChangelogFile: true
-            splitStatements: true
-            stripComments: true
